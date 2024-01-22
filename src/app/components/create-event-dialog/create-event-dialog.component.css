@@ -1,0 +1,16 @@
+.close-div{
+    display: flex;
+    justify-content: end;
+    color: rgb(148, 3, 3);
+}
+.close-div mat-icon{
+    border: 1px solid rgb(148, 3, 3);
+    margin-top: 5px;
+    margin-right: 5px;
+    border-radius: 5px;
+}
+.close-div mat-icon:hover{
+    cursor: pointer;
+    color: red;
+    border: 1px solid rgb(255, 0, 0);
+}

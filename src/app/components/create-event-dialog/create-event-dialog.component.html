@@ -1,0 +1,71 @@
+<div class="close-div">
+    <mat-icon (click)="close()" >close</mat-icon>
+</div>
+<div class="relative p-2 container flex-col mb-2  ">
+    <div class="container flex justify-center">
+        <form [formGroup]="eventForm" (submit)="submitForm()"  enctype="multipart/form-data">
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Event Name</label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="eventName" type="text" placeholder="Enter name of the event" formControlName="eventName">
+            </div>
+    
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="">Event Date</label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="eventDate" type="date" placeholder="Enter the date of event" formControlName="eventDate">
+            </div>
+    
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="">Event Time</label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                    id="eventTime" type="time" placeholder="Enter the time of event" formControlName="eventTime">
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2" for="">Location</label>
+                <input
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                     type="text" placeholder="Enter location" formControlName="location">
+            </div>
+
+            <div class="mb-4">
+                <label class="block text-gray-700 text-sm font-bold mb-2">Details</label>
+                <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                 type="text" placeholder="Details" formControlName="details" ></textarea>
+              </div>
+           <div class="mb-4">
+            <label class="block text-gray-700 text-sm font-bold mb-2" for="">Audiences Names</label>
+            <input
+                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                 type="text" placeholder="Enter the name of audience" formControlName="audience" >
+                <div style="display: flex; justify-content: end;">
+                <button (click)="addAudience()" matTooltip="Add options" mat-mini-fab><mat-icon>add</mat-icon></button>
+              </div>
+              <div *ngIf="audiencelist.length>=1" class="option-div">
+                <ul >
+                  <li class="ul-li-heading">Added audiences</li>
+                  <li style="margin-left: 15px;" *ngFor="let audience  of audiencelist">
+                    <a>{{audience}}</a><mat-icon (click)="removeAudience(audiencelist.indexOf(audience))" style="color: red; cursor: pointer;">close</mat-icon>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="mb-4">
+                <div class="file-drop-zone border-dashed border-2 rounded-lg border-gray-300 p-4">
+                    <div class=" flex justify-center" style="width: 300px; overflow: auto;">
+                        <img width="80px" height="80px" *ngFor="let imgSrc of imageSrc" [src]="imgSrc" alt="Image Preview" class="p-2 preview-image"><br>
+                    </div>
+                    <input type="file" multiple (change)="onFilesSelected($event)">
+                </div>
+            </div>
+            <button type="submit"
+             class="bg-blue-500 hover:bg-blue-700 text-white  py-2 px-4 rounded-lg">
+             Create Event</button>
+        </form>
+    </div>
+    
+</div>

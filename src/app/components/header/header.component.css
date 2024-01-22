@@ -1,0 +1,44 @@
+.header {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.head{
+ margin-bottom: 80px;
+ width: 100%;
+ background-color: antiquewhite;
+}
+mat-toolbar{
+    position: fixed;
+    z-index: 999;
+    top: 0px !important;
+}
+
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+}
+
+.menu-list li {
+    margin-right: 20px;
+}
+
+.menu-list a {
+    text-decoration: none;
+
+    color: rgb(117, 117, 117);
+}
+
+.menu-list a:hover {
+    color: rgb(0, 0, 0);
+}
+
+.active-link {
+    border-bottom: 2px solid blue;
+    color: rgb(0, 0, 0) !important;
+}
+.arrow:hover{
+    cursor: pointer;
+}

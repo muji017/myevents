@@ -1,0 +1,54 @@
+<app-header></app-header>
+<div class="container-fluid m-5">
+<div class="container flex justify-end text-xs">
+  <div class=" m-2 border-2 border-black py-2 px-4 rounded">
+    Audiences List : 
+  <select (change)="getAudiencewise($event)" matTooltip="Get all Events of user"  >
+    <option *ngFor="let aud of allAudience" [value]="aud.name">
+     {{aud.name}}  ({{aud.count}})</option> 
+  </select>
+  </div>
+  <div class=" m-2 border-2 border-black py-2 px-4 rounded">
+    Location : 
+  <select (change)="getLocationwise($event)" matTooltip="Get all in the location">
+  <option *ngFor="let loc of allLocations" [value]="loc.location">
+   {{loc.location}}  ({{loc.count}})</option> 
+  </select>
+  </div>
+  <button matTooltip="Get all Events" class="button bg-gray-500 m-2 text-white py-2 px-4 rounded"
+    (click)="getAllEvents()">GetAllEvents </button>
+    <button matTooltip="Get Events dateWise more than 5 events" class="button bg-gray-500 m-2 text-white py-2 px-4 rounded"
+    (click)="getEventsDatewise()">GetEvents same Date </button>
+    <button matTooltip="Create an event" class="button bg-gray-500 m-2 text-white py-2 px-4 rounded"
+    (click)="create()">Create Event</button>
+</div>
+  <div class="main-div ">
+    <div class="card-main  flex flex-wrap items-center justify-center xs:flex-col">  
+      <h2 *ngIf="allEvents.length<=0||!allEvents">
+        There is no events to display
+    </h2>
+      <div  *ngFor="let event of allEvents" class="w-3/4 sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/5 p-2">
+        <div (click)="getEventDetails(event?._id)" class="bg-white rounded-lg " style="box-shadow: 0 0 10px rgba(0, 0, 0,0.5);">
+          <div class=" h-32 mb-2 rounded-t-lg">
+            <img class="h-40 w-full rounded-t-lg" [src]="url + event?.eventImages[0]">
+          </div>
+          <div class="pt-5 p-2">
+            <p class="text-xl">Event Name : {{event?.eventName}} </p> 
+              <div class="mb-2 text-xs">
+                <label class="block">Event Date : {{event?.eventDate| date:'dd/MM/yyyy'}}</label>
+                <label class="block">Event Time : {{event?.eventTime}}</label>
+                <label class="block">Event Location : {{event?.location}}</label>
+                <label class="block">Event Details : {{event?.details}}</label>
+                <label class="block">Total audiences: {{event?.audiences.length}}</label>
+              </div>
+          </div>
+          <div class="flex justify-end p-2">
+            <mat-icon matTooltip="Delete Event" class=" cursor-pointer text-red-500 hover:text-red-700" (click)="delete(event?._id)">delete</mat-icon>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+</div>
+</div>
