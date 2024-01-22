@@ -1,1 +1,30 @@
-<p>event-details works!</p>
+<app-header>
+</app-header>
+<div class="w-full flex justify-center">
+<div class="container w-2/3 bg-gray-100 flex justify-center">
+
+    <div class="container m-5 ">
+      <div class="w-2/3" >
+        <img [src]="imgUrl + event?.eventImages[0]" alt="Main Image" class="w-50 h-auto">
+      </div>
+
+      <div class="w-2/3 ml-4 ">
+        <div class="flex flex-wrap mt-4">
+          <img *ngFor="let img of event?.eventImages" [src]="imgUrl + img" alt="Small Image 1" class="w-1/4 h-auto p-1">
+        </div>
+      </div>
+    </div>
+    <div class="container mx-auto mt-8">
+      <div class="flex">
+        <div class="w-2/3">
+          <h2 class="text-2xl font-bold mb-4">Event Name: {{event.eventName}}</h2>
+          <p class="text-gray-700">Event Date: {{event.eventDate | date:'dd/MM/yyyy'}}</p>
+          <p class="text-gray-700">Event Time: {{event.eventTime}}</p>
+          <p class="text-gray-700">Audience List: <span *ngFor="let aud of event.audiences" class="ml-2">{{aud}},</span></p>
+          <p class="text-gray-700">Event Details: {{event.details}}</p>
+          <p class="text-gray-700">Event Location: {{event.location}}</p>
+        </div>
+      </div>
+    </div>
+</div>
+</div>

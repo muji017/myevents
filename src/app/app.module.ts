@@ -11,6 +11,7 @@ import { CreateEventDialogComponent } from './components/create-event-dialog/cre
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule, provideToastr } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
+import { EventDetailsComponent } from './components/event-details/event-details.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     HomeComponent,
     HeaderComponent,
     EventsComponent,
-    CreateEventDialogComponent
+    CreateEventDialogComponent,
+    EventDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     FormsModule,
     ToastrModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [
     provideToastr({

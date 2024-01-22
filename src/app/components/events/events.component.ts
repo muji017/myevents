@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EventServiceService } from 'src/app/services/event-service.service';
 import { imgUrl, url } from 'src/app/services/endPoint';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-events',
@@ -21,7 +22,8 @@ export class EventsComponent {
   constructor(
     private dialog:MatDialog,
     private service:EventServiceService,
-    private toastr:ToastrService
+    private toastr:ToastrService,
+    private router:Router
     ){}
 
   ngOnInit(){
@@ -85,6 +87,6 @@ export class EventsComponent {
     })
   }
   getEventDetails(eventId:string){
-    
+     this.router.navigate([`/events/${eventId}`])
   }
 }
